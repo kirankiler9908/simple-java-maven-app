@@ -1,11 +1,12 @@
 pipeline {
-    agent {
-        tools {         
-            maven 'maven-3.8.7'       
-            jdk 'java-11'    
-        }
-    }
+    agent any
     stages {
+stage("Clean up"){
+    steps{
+        deleteDir()
+    }
+}
+        
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
